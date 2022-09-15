@@ -8,4 +8,4 @@ Name stlil to be decided.
 
 ## Instructions
 
-Just open the `./build/The Ungraspable_Game_ Definition.html` file.
+Just open the `./build/The Ungraspable_Game_Definition.html` file.

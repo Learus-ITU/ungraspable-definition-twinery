@@ -9,12 +9,11 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play The Ungraspable&quot;Game&quot; Definition.</tw-noscript></noscript></tw-story>
-<tw-storydata name="The Ungraspable&quot;Game&quot; Definition" startnode="19" creator="Twine" creator-version="2.5.1" format="Harlowe" format-version="3.3.3" ifid="C88D6321-2D54-4CAD-BFFF-0D3899068C60" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+<tw-storydata name="The Ungraspable&quot;Game&quot; Definition" startnode="19" creator="Twine" creator-version="2.5.1" format="Harlowe" format-version="3.3.3" ifid="C88D6321-2D54-4CAD-BFFF-0D3899068C60" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Literata");
 
 * {
- font-family: 'Montserrat, sans-serif';
+  font-family: 'Literata', sans-serif !important;
 }
-
 tw-link
 {
   color: tomato;
@@ -79,24 +78,45 @@ What is this? There&#39;s someone lying there.
 Is he alive?
 
 [[Check for a pulse.]]
-[[Go back-&gt;Push the door to enter the building.]] </tw-passagedata><tw-passagedata pid="10" name="Check for a pulse." tags="" position="800,925" size="100,100">He is alive!
+[[Go back-&gt;Push the door to enter the building.]] </tw-passagedata><tw-passagedata pid="10" name="Check for a pulse." tags="" position="800,925" size="100,100">...
+
+(after:2s) [
+He is alive!
 Oh... he&#39;s trying to say something.
 
 [[Lean towards him.]]
-[[Hell no!-&gt;Push the door to enter the building.]]</tw-passagedata><tw-passagedata pid="11" name="Lean towards him." tags="" position="800,1025" size="100,100">&quot;Ha... It&#39;s Ha... Wha......&quot;
+[[Hell no!-&gt;Push the door to enter the building.]]
+]
 
+</tw-passagedata><tw-passagedata pid="11" name="Lean towards him." tags="" position="800,1025" size="100,100">&quot;Ha... It&#39;s Ha... Wha......&quot;
+
+(after:2s)
+[
+...
+]
+
+(after:4s)
+[
 The man drops dead.
 
+[[...]] 
+]
+</tw-passagedata><tw-passagedata pid="12" name="..." tags="" position="800,1125" size="100,100">&lt;script&gt;
+	window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/wind.wav?raw=true&quot;);
+    &lt;/script&gt;
 
-[[...]] </tw-passagedata><tw-passagedata pid="12" name="..." tags="" position="800,1125" size="100,100">A cold breeze runs throught your clothes.
+
+A cold breeze runs throught your clothes.
 
 ...
-
+(after:2s)[
 You are being watched.
 
 (set:$saw_dead_man to true)
+[[Go right, towards the ITU doorway.]] 
+]
 
-[[Go right, towards the ITU doorway.]] </tw-passagedata><tw-passagedata pid="13" name="Attempt to use the rotating door." tags="" position="950,650" size="100,100">You press the button, but... nothing.
+</tw-passagedata><tw-passagedata pid="13" name="Attempt to use the rotating door." tags="" position="950,650" size="100,100">You press the button, but... nothing.
 You notice a sign on the glass saying.
 
 &quot;Out of order. Please use the door for disabled people&quot;
@@ -104,6 +124,11 @@ You notice a sign on the glass saying.
 [[Eh, whatever.|Attempt to use the disabled people&#39;s door.]]</tw-passagedata><tw-passagedata pid="14" name="Attempt to use the disabled people&#39;s door." tags="" position="1075,650" size="100,100">Once again, you take out your student card and scan it.
 
 ...
+
+&lt;script&gt;
+	window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Disabled-Door.wav?raw=true&quot;);
+    &lt;/script&gt;
+
 
 (after:3s) [
 Beep! Clank!
@@ -113,9 +138,6 @@ The door opens automatically.
 [[Move to the elevator area.]]
 ]
 
-&lt;script&gt;
-	window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Disabled-Door.wav?raw=true&quot;);
-    &lt;/script&gt;
 
 </tw-passagedata><tw-passagedata pid="15" name="Move to the elevator area." tags="" position="1075,775" size="100,100">You stand before the 2 elevator doors.
 
@@ -136,9 +158,22 @@ window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/
 
   [[Get in]]
 ]
-</tw-passagedata><tw-passagedata pid="18" name="Get in" tags="" position="1275,900" size="100,100">As you enter, you feel a cold breeze blow through your clothes.
+</tw-passagedata><tw-passagedata pid="18" name="Get in" tags="" position="1275,900" size="100,100">&lt;script&gt;
+	window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/wind.wav?raw=true&quot;);
+    &lt;/script&gt;
 
-(if:$saw_dead_man is true)[You know that feeling. You have felt it before.]
+As you enter, you feel a cold breeze blow through your clothes.
+
+(after:2s) [(if:$saw_dead_man is true)[You know that feeling. You have felt it before.]]
+(after:3s)[
+Must&#39;ve been the wind...
+
+
+[[Press 1]]
+[[Press 2]]
+[[Press 3]]
+]
+
 </tw-passagedata><tw-passagedata pid="19" name="Start" tags="" position="350,475" size="100,100">&lt;!--
 
 This exists only to start the sound.
@@ -147,7 +182,7 @@ This works without breaking immersion :O
 
 --&gt;
 
-[[Start Game|The Beginning]]</tw-passagedata></tw-storydata>
+[[Start Game|The Beginning]]</tw-passagedata><tw-passagedata pid="20" name="Press 1" tags="" position="1150,1025" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="Press 2" tags="" position="1275,1025" size="100,100"></tw-passagedata><tw-passagedata pid="22" name="Press 3" tags="" position="1400,1025" size="100,100"></tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
