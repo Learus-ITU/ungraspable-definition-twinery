@@ -9,7 +9,13 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play The Ungraspable&quot;Game&quot; Definition.</tw-noscript></noscript></tw-story>
-<tw-storydata name="The Ungraspable&quot;Game&quot; Definition" startnode="19" creator="Twine" creator-version="2.5.1" format="Harlowe" format-version="3.3.3" ifid="C88D6321-2D54-4CAD-BFFF-0D3899068C60" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-link
+<tw-storydata name="The Ungraspable&quot;Game&quot; Definition" startnode="19" creator="Twine" creator-version="2.5.1" format="Harlowe" format-version="3.3.3" ifid="C88D6321-2D54-4CAD-BFFF-0D3899068C60" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+* {
+ font-family: 'Montserrat, sans-serif';
+}
+
+tw-link
 {
   color: tomato;
   transition: 200ms;
@@ -38,12 +44,21 @@ document.body.addEventListener("mousemove", function () {
 
 [[Try to open the door.]] </tw-passagedata><tw-passagedata pid="3" name="Try to open the door." tags="" position="600,525" size="100,100">The door won&#39;t budge. Perhaps you need to unlock it?
 
-[[Take out your student card.]]</tw-passagedata><tw-passagedata pid="4" name="Take out your student card." tags="" position="700,525" size="100,100">Beep, Beep. Clack!
+[[Take out your student card.]]</tw-passagedata><tw-passagedata pid="4" name="Take out your student card." tags="" position="700,525" size="100,100">...
+
+&lt;script&gt;
+	window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Entrance.wav?raw=true&quot;);
+    &lt;/script&gt;
+
+
+(after:3s)[
+Beep, Beep. Clack!
 The door is unlocked.
 
 [[Push the door to enter the building.]]
+]
 
-&lt;audio src=&quot;https://www.mediacollege.com/downloads/sound-effects/beep/beep-01.wav&quot; autoplay&gt;</tw-passagedata><tw-passagedata pid="5" name="Push the door to enter the building." tags="" position="800,525" size="100,100">You find yourself in front of the big rotating DR door. You&#39;ve never been into the DR space of the building. Perhaps now is the time?
+</tw-passagedata><tw-passagedata pid="5" name="Push the door to enter the building." tags="" position="800,525" size="100,100">You find yourself in front of the big rotating DR door. You&#39;ve never been into the DR space of the building. Perhaps now is the time?
 
 [[Attempt to enter the DR part of the building.]]
 [[Go right, towards the ITU doorway.]]</tw-passagedata><tw-passagedata pid="6" name="Attempt to enter the DR part of the building." tags="" position="800,625" size="100,100">You scan your student card in the DR scanner.
@@ -88,17 +103,32 @@ You notice a sign on the glass saying.
 
 [[Eh, whatever.|Attempt to use the disabled people&#39;s door.]]</tw-passagedata><tw-passagedata pid="14" name="Attempt to use the disabled people&#39;s door." tags="" position="1075,650" size="100,100">Once again, you take out your student card and scan it.
 
+...
+
+(after:3s) [
 Beep! Clank!
 
 The door opens automatically.
 
-[[Move to the elevator area.]]</tw-passagedata><tw-passagedata pid="15" name="Move to the elevator area." tags="" position="1075,775" size="100,100">You stand before the 2 elevator doors.
+[[Move to the elevator area.]]
+]
+
+&lt;script&gt;
+	window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Disabled-Door.wav?raw=true&quot;);
+    &lt;/script&gt;
+
+</tw-passagedata><tw-passagedata pid="15" name="Move to the elevator area." tags="" position="1075,775" size="100,100">You stand before the 2 elevator doors.
 
 [[Press the UP button.]]
 [[Press the DOWN button.]]</tw-passagedata><tw-passagedata pid="16" name="Press the DOWN button." tags="" position="1025,900" size="100,100">Why would you want to go down? The Game Lab is upstairs.
 
 [[Press the UP button|Press the UP button.]] 
 [[Press the DOWN button|Press the UP button.]] </tw-passagedata><tw-passagedata pid="17" name="Press the UP button." tags="" position="1150,900" size="100,100">...
+
+&lt;script&gt;
+window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Elevator-Call.wav?raw=true&quot;)
+&lt;/script&gt;
+
 (after:3s)[
  Ding!
 
@@ -108,7 +138,8 @@ The door opens automatically.
 ]
 </tw-passagedata><tw-passagedata pid="18" name="Get in" tags="" position="1275,900" size="100,100">As you enter, you feel a cold breeze blow through your clothes.
 
-(if:$saw_dead_man is true)[You know that feeling. You have felt it before.]</tw-passagedata><tw-passagedata pid="19" name="Start" tags="" position="350,475" size="100,100">&lt;!--
+(if:$saw_dead_man is true)[You know that feeling. You have felt it before.]
+</tw-passagedata><tw-passagedata pid="19" name="Start" tags="" position="350,475" size="100,100">&lt;!--
 
 This exists only to start the sound.
 We can&#39;t autoplay the sound until the user has at least clicked on the document once.
