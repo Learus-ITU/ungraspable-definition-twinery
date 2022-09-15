@@ -9,10 +9,28 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play The Ungraspable&quot;Game&quot; Definition.</tw-noscript></noscript></tw-story>
-<tw-storydata name="The Ungraspable&quot;Game&quot; Definition" startnode="1" creator="Twine" creator-version="2.5.1" format="Harlowe" format-version="3.3.3" ifid="C88D6321-2D54-4CAD-BFFF-0D3899068C60" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">window.playSound = (sound) => {
-  	var audio = new Audio('audio_file.mp3');
+<tw-storydata name="The Ungraspable&quot;Game&quot; Definition" startnode="19" creator="Twine" creator-version="2.5.1" format="Harlowe" format-version="3.3.3" ifid="C88D6321-2D54-4CAD-BFFF-0D3899068C60" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-link
+{
+  color: tomato;
+  transition: 200ms;
+}
+
+tw-link:hover
+{
+  filter: brightness(60%);
+  color: tomato;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">window.playSound = (sound) => {
+  	var audio = new Audio(sound);
 	audio.play();
-}</script><tw-passagedata pid="1" name="The Beginning" tags="" position="475,475" size="100,100">Its 10:30 PM. You had just left the DR building to go home, after playing Mario Kart for 5 hours straight, when you realized that you forgot your backpack in 2F13. You walk back from the metro station and are now in front of the DR building&#39;s door.
+}
+
+var audio = document.createElement('audio');
+audio.src = "https://rr3---sn-ovgq0oxu-j2ie.googlevideo.com/videoplayback?expire=1663285556&ei=1GQjY_HPBYneuALqi4iQAw&ip=130.226.132.96&id=o-AJHQPk8CmGQTR87f4f09pa_MwtIV1rqEtkZAhbX6Er_H&itag=140&source=youtube&requiressl=yes&mh=Ab&mm=31%2C29&mn=sn-ovgq0oxu-j2ie%2Csn-5goeen7y&ms=au%2Crdu&mv=m&mvi=3&pl=27&initcwndbps=1620000&vprv=1&mime=audio%2Fmp4&ns=kMYKPoq-S7YyEaQJMJFAONYI&gir=yes&clen=173816663&dur=10740.064&lmt=1572545224453281&mt=1663263668&fvip=3&keepalive=yes&fexp=24001373%2C24007246&c=WEB&rbqsm=fr&txp=5431432&n=XYmF81EcCK-C-iO57&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wRAIgcPjD0dtml2tW-z1tSv84iHUmgEYrVIbIlySYIx3x7XcCIErVL0wT6O3hgiI0V134B4Ms6gdyEwdJdAxr0Wtc3kI7&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AG3C_xAwRQIgdqlcV4P3B7W_QuX0eZGJgMF5YGKeEAcPsRePOUt5KXQCIQCH_3QSQo1TB7ESP6-EBHZJ1hJV5dQI5ggliXxb8lyjow%3D%3D";
+audio.loop = true;
+
+document.body.addEventListener("mousemove", function () {
+    audio.play()
+})</script><tw-passagedata pid="1" name="The Beginning" tags="" position="475,475" size="100,100">Its 10:30 PM. It&#39;s raining. You had just left the DR building to go home, after playing Mario Kart for 5 hours straight, when you realized that you forgot your backpack in 2F13. You walk back from the metro station and are now in front of the DR building&#39;s door.
 
 [[You turn around and go back home. You are going to be here tomorrow as well right?. Grinding is life!]]
 
@@ -33,7 +51,7 @@ Beep, Beep. Booooop.
 That didn&#39;t work.
 
 [[Look around for a guard to help you with the situation.]]
-[[Go right, towards the ITU doorway.]]</tw-passagedata><tw-passagedata pid="7" name="Go right, towards the ITU doorway." tags="" position="975,800" size="100,100">Well, you know the drill.
+[[Go right, towards the ITU doorway.]]</tw-passagedata><tw-passagedata pid="7" name="Go right, towards the ITU doorway." tags="" position="950,525" size="100,100">Well, you know the drill.
 
 [[Attempt to use the rotating door.]]
 [[Attempt to use the disabled people&#39;s door.]]</tw-passagedata><tw-passagedata pid="8" name="Look around for a guard to help you with the situation." tags="" position="800,725" size="100,100">You spend a moment looking around the little passageway.
@@ -55,13 +73,50 @@ Oh... he&#39;s trying to say something.
 The man drops dead.
 
 
-[[...]] </tw-passagedata><tw-passagedata pid="12" name="..." tags="" position="800,1125" size="100,100">Goosebumps start building up in your body. A cold breeze runs throught your clothes.
+[[...]] </tw-passagedata><tw-passagedata pid="12" name="..." tags="" position="800,1125" size="100,100">A cold breeze runs throught your clothes.
 
 ...
 
 You are being watched.
 
-[[Go right, towards the ITU doorway.]] </tw-passagedata><tw-passagedata pid="13" name="Attempt to use the rotating door." tags="" position="975,925" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Attempt to use the disabled people&#39;s door." tags="" position="1100,925" size="100,100"></tw-passagedata></tw-storydata>
+(set:$saw_dead_man to true)
+
+[[Go right, towards the ITU doorway.]] </tw-passagedata><tw-passagedata pid="13" name="Attempt to use the rotating door." tags="" position="950,650" size="100,100">You press the button, but... nothing.
+You notice a sign on the glass saying.
+
+&quot;Out of order. Please use the door for disabled people&quot;
+
+[[Eh, whatever.|Attempt to use the disabled people&#39;s door.]]</tw-passagedata><tw-passagedata pid="14" name="Attempt to use the disabled people&#39;s door." tags="" position="1075,650" size="100,100">Once again, you take out your student card and scan it.
+
+Beep! Clank!
+
+The door opens automatically.
+
+[[Move to the elevator area.]]</tw-passagedata><tw-passagedata pid="15" name="Move to the elevator area." tags="" position="1075,775" size="100,100">You stand before the 2 elevator doors.
+
+[[Press the UP button.]]
+[[Press the DOWN button.]]</tw-passagedata><tw-passagedata pid="16" name="Press the DOWN button." tags="" position="1025,900" size="100,100">Why would you want to go down? The Game Lab is upstairs.
+
+[[Press the UP button|Press the UP button.]] 
+[[Press the DOWN button|Press the UP button.]] </tw-passagedata><tw-passagedata pid="17" name="Press the UP button." tags="" position="1150,900" size="100,100">...
+(after:3s)[
+ Ding!
+
+  The elevator has arrived.
+
+  [[Get in]]
+]
+</tw-passagedata><tw-passagedata pid="18" name="Get in" tags="" position="1275,900" size="100,100">As you enter, you feel a cold breeze blow through your clothes.
+
+(if:$saw_dead_man is true)[You know that feeling. You have felt it before.]</tw-passagedata><tw-passagedata pid="19" name="Start" tags="" position="350,475" size="100,100">&lt;!--
+
+This exists only to start the sound.
+We can&#39;t autoplay the sound until the user has at least clicked on the document once.
+This works without breaking immersion :O
+
+--&gt;
+
+[[Start Game|The Beginning]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
