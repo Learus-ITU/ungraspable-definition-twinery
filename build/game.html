@@ -30,7 +30,7 @@ tw-link:hover
 }
 
 var audio = document.createElement('audio');
-audio.src = "https://rr3---sn-ovgq0oxu-j2ie.googlevideo.com/videoplayback?expire=1663285556&ei=1GQjY_HPBYneuALqi4iQAw&ip=130.226.132.96&id=o-AJHQPk8CmGQTR87f4f09pa_MwtIV1rqEtkZAhbX6Er_H&itag=140&source=youtube&requiressl=yes&mh=Ab&mm=31%2C29&mn=sn-ovgq0oxu-j2ie%2Csn-5goeen7y&ms=au%2Crdu&mv=m&mvi=3&pl=27&initcwndbps=1620000&vprv=1&mime=audio%2Fmp4&ns=kMYKPoq-S7YyEaQJMJFAONYI&gir=yes&clen=173816663&dur=10740.064&lmt=1572545224453281&mt=1663263668&fvip=3&keepalive=yes&fexp=24001373%2C24007246&c=WEB&rbqsm=fr&txp=5431432&n=XYmF81EcCK-C-iO57&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wRAIgcPjD0dtml2tW-z1tSv84iHUmgEYrVIbIlySYIx3x7XcCIErVL0wT6O3hgiI0V134B4Ms6gdyEwdJdAxr0Wtc3kI7&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AG3C_xAwRQIgdqlcV4P3B7W_QuX0eZGJgMF5YGKeEAcPsRePOUt5KXQCIQCH_3QSQo1TB7ESP6-EBHZJ1hJV5dQI5ggliXxb8lyjow%3D%3D";
+audio.src = "https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Background/Ambience.m4a?raw=true";
 audio.loop = true;
 
 document.body.addEventListener("mousemove", function () {
@@ -121,7 +121,7 @@ You notice a sign on the glass saying.
 
 &quot;Out of order. Please use the door for disabled people&quot;
 
-[[Eh, whatever.|Attempt to use the disabled people&#39;s door.]]</tw-passagedata><tw-passagedata pid="14" name="Attempt to use the disabled people&#39;s door." tags="" position="1075,650" size="100,100">Once again, you take out your student card and scan it.
+[[Eh, whatever.|Attempt to use the disabled people&#39;s door.]]</tw-passagedata><tw-passagedata pid="14" name="Attempt to use the disabled people&#39;s door." tags="" position="1075,575" size="100,100">Once again, you take out your student card and scan it.
 
 ...
 
@@ -139,13 +139,13 @@ The door opens automatically.
 ]
 
 
-</tw-passagedata><tw-passagedata pid="15" name="Move to the elevator area." tags="" position="1075,775" size="100,100">You stand before the 2 elevator doors.
+</tw-passagedata><tw-passagedata pid="15" name="Move to the elevator area." tags="" position="1200,575" size="100,100">You stand before the 2 elevator doors.
 
 [[Press the UP button.]]
-[[Press the DOWN button.]]</tw-passagedata><tw-passagedata pid="16" name="Press the DOWN button." tags="" position="1025,900" size="100,100">Why would you want to go down? The Game Lab is upstairs.
+[[Press the DOWN button.]]</tw-passagedata><tw-passagedata pid="16" name="Press the DOWN button." tags="" position="1325,500" size="100,100">Why would you want to go down? The Game Lab is upstairs.
 
 [[Press the UP button|Press the UP button.]] 
-[[Press the DOWN button|Press the UP button.]] </tw-passagedata><tw-passagedata pid="17" name="Press the UP button." tags="" position="1150,900" size="100,100">...
+[[Press the DOWN button|Press the UP button.]] </tw-passagedata><tw-passagedata pid="17" name="Press the UP button." tags="" position="1325,625" size="100,100">...
 
 &lt;script&gt;
 window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Elevator-Call.wav?raw=true&quot;)
@@ -158,12 +158,10 @@ window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/
 
   [[Get in]]
 ]
-</tw-passagedata><tw-passagedata pid="18" name="Get in" tags="" position="1275,900" size="100,100">&lt;script&gt;
+</tw-passagedata><tw-passagedata pid="18" name="Get in" tags="" position="1450,575" size="100,100">As you enter, you feel a cold breeze blow through your clothes.
+&lt;script&gt;
 	window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/wind.wav?raw=true&quot;);
     &lt;/script&gt;
-
-As you enter, you feel a cold breeze blow through your clothes.
-
 (after:2s) [(if:$saw_dead_man is true)[You know that feeling. You have felt it before.]]
 (after:3s)[
 Must&#39;ve been the wind...
@@ -182,7 +180,65 @@ This works without breaking immersion :O
 
 --&gt;
 
-[[Start Game|The Beginning]]</tw-passagedata><tw-passagedata pid="20" name="Press 1" tags="" position="1150,1025" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="Press 2" tags="" position="1275,1025" size="100,100"></tw-passagedata><tw-passagedata pid="22" name="Press 3" tags="" position="1400,1025" size="100,100"></tw-passagedata></tw-storydata>
+[[Start Game|The Beginning]]</tw-passagedata><tw-passagedata pid="20" name="Press 1" tags="" position="1575,500" size="100,100">1st floor? Do you even know what&#39;s up there?
+
+(set:$intro_1st_floor to true)
+
+[[Yes|Press the button.]]
+[[No|Press the button.]] </tw-passagedata><tw-passagedata pid="21" name="Press 2" tags="" position="1575,625" size="100,100">Ah number 2. Such a magnificent number. Not quite as number 3, though.
+(set:$intro_2nd_floor to true)
+
+[[Press the button.]]
+
+</tw-passagedata><tw-passagedata pid="22" name="Press 3" tags="" position="1575,750" size="100,100">Number 3... The magic number. Or was it number 4? Maybe... 7?
+(set:$intro_2nd_floor to true)
+...
+
+(after:3s)[
+You should ask (text-colour:magenta)[Hajo] about this.
+
+[[Press the button.]]
+]
+
+
+</tw-passagedata><tw-passagedata pid="23" name="Foyer Elevator Area" tags="" position="2000,600" size="100,100"></tw-passagedata><tw-passagedata pid="24" name="Press the button." tags="" position="1725,625" size="100,100">The doors close, and you&#39;re just standing there wondering if the elevator is moving or not.
+You turn your eyes to the left. The button you pressed is no longer lit up.
+
+...
+
+The elevator wasn&#39;t moving after all.
+Ah, yes. It&#39;s after 4 PM.
+
+[[Scan your student card and press the button again.]]
+</tw-passagedata><tw-passagedata pid="25" name="Scan your student card and press the button again." tags="" position="1850,625" size="100,100">...
+
+&lt;script&gt;
+	window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Elevator-Ride.wav?raw=true&quot;);
+&lt;/script&gt;
+
+(after:4s)[
+	The elevator stops and the doors open.
+    
+    (if:$intro_1st_floor is true)[
+    [[Get off.|1st floor]]
+    (if:$intro_2nd_floor is true)[
+	[[Get off.|Foyer Elevator Area]]
+    ]
+    (if:$intro_3rd_floor is true)
+    [[Get off.|3rd floor]]
+    ]
+]
+
+</tw-passagedata><tw-passagedata pid="26" name="1st floor" tags="" position="2000,475" size="100,100">You find yourself in a dark lightless room. The only light is coming from the elevator.
+It allows you to see a small scanning device on the other side of the room. There&#39;s something written on it?
+
+(after:3s)[
+The elevator doors are closing. You can&#39;t see anything.
+
+[[Move towards the scanning device.]]
+[[Try to find the elevator button to go back.]]
+]
+</tw-passagedata><tw-passagedata pid="27" name="3rd floor" tags="" position="2000,725" size="100,100"></tw-passagedata><tw-passagedata pid="28" name="Move towards the scanning device." tags="" position="1925,350" size="100,100">You take small but sure steps moving forward.</tw-passagedata><tw-passagedata pid="29" name="Try to find the elevator button to go back." tags="" position="2075,350" size="100,100"></tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
