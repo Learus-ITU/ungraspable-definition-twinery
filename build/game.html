@@ -24,9 +24,19 @@ tw-link:hover
 {
   filter: brightness(60%);
   color: tomato;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">window.playSound = (sound) => {
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">window.playSound = (sound, loop=false, varname=null) => {
   	var audio = new Audio(sound);
+    if (loop)
+      audio.loop = true;
+
 	audio.play();
+  
+  	if (varname)
+  		window[varname] = audio;
+}
+
+window.stopSound = (varname) => {
+  window[varname].pause();
 }
 
 var audio = document.createElement('audio');
@@ -185,7 +195,9 @@ This works without breaking immersion :O
 
 [[Start Game|The Beginning]]
 
-(set:$intro_complete to false)</tw-passagedata><tw-passagedata pid="20" name="Press 1" tags="" position="1575,550" size="100,100">1st floor? Do you even know what&#39;s up there?
+(set:$intro_complete to false)
+(set:$kitchen_clean to false)
+(set:$gameLabExplored to false)</tw-passagedata><tw-passagedata pid="20" name="Press 1" tags="" position="1575,550" size="100,100">1st floor? Do you even know what&#39;s up there?
 
 (set:$intro_1st_floor to true)
 
@@ -206,14 +218,14 @@ You should ask (text-colour:magenta)[Hajo] about this.
 ]
 
 
-</tw-passagedata><tw-passagedata pid="23" name="Foyer Elevator Area" tags="" position="2000,650" size="100,100">You get off the elevator. You are in the Foyer elevator area. You are blinded by the flickering light reflecting on the bright yellow floor, while the elevator doors close behind you.
+</tw-passagedata><tw-passagedata pid="23" name="Foyer Elevator Area" tags="" position="2000,675" size="100,100">You get off the elevator. You are in the Foyer elevator area. You are blinded by the flickering light reflecting on the bright yellow floor, while the elevator doors close behind you.
 
 You look to the left. The famed DR al fresco Cafeteria.
 
 To the right, you can see the Foyer. No people in sight.
 
 [[Try to enter the Cafeteria.]]
-[[Go towards the foyer.]]</tw-passagedata><tw-passagedata pid="24" name="Press the button." tags="" position="1725,675" size="100,100">The doors close, and you&#39;re just standing there wondering if the elevator is moving or not.
+[[Go towards the foyer.]]</tw-passagedata><tw-passagedata pid="24" name="Press the button." tags="" position="1700,675" size="100,100">The doors close, and you&#39;re just standing there wondering if the elevator is moving or not.
 You turn your eyes to the left. The button you pressed is no longer lit up.
 
 ...
@@ -222,7 +234,7 @@ The elevator wasn&#39;t moving after all.
 Ah, yes. It&#39;s after 4 PM.
 
 [[Scan your student card and press the button again.]]
-</tw-passagedata><tw-passagedata pid="25" name="Scan your student card and press the button again." tags="" position="1850,675" size="100,100">...
+</tw-passagedata><tw-passagedata pid="25" name="Scan your student card and press the button again." tags="" position="1825,675" size="100,100">...
 
 &lt;script&gt;
 	window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Intro/Elevator-Ride.wav?raw=true&quot;);
@@ -240,7 +252,7 @@ Ah, yes. It&#39;s after 4 PM.
     ]
 ]
 
-</tw-passagedata><tw-passagedata pid="26" name="1st floor" tags="" position="2000,525" size="100,100">You find yourself in a dark lightless room. The only light is coming from the elevator.
+</tw-passagedata><tw-passagedata pid="26" name="1st floor" tags="" position="2000,550" size="100,100">You find yourself in a dark lightless room. The only light is coming from the elevator.
 It allows you to see a small scanning device on the other side of the room. There&#39;s something written on it?
 (set:$intro_1st_floor_done to true)
 
@@ -250,12 +262,12 @@ The elevator doors are closing. You can&#39;t see anything.
 [[Move towards the scanning device.]]
 [[Try to find the elevator button to go back.]]
 ]
-</tw-passagedata><tw-passagedata pid="27" name="3rd floor" tags="" position="2000,775" size="100,100"></tw-passagedata><tw-passagedata pid="28" name="Move towards the scanning device." tags="" position="2075,350" size="100,100">You take small but sure steps moving forward. You&#39;re not sure what&#39;s in the room. You can&#39;t really see anything.
+</tw-passagedata><tw-passagedata pid="27" name="3rd floor" tags="" position="2000,800" size="100,100"></tw-passagedata><tw-passagedata pid="28" name="Move towards the scanning device." tags="" position="2050,425" size="100,100">You take small but sure steps moving forward. You&#39;re not sure what&#39;s in the room. You can&#39;t really see anything.
 
 Perhaps... this is not the time for dark room exploration?
 
 [[Go back.|Try to find the elevator button to go back.]]
-[[Press on.]]</tw-passagedata><tw-passagedata pid="29" name="Try to find the elevator button to go back." tags="" position="1900,350" size="100,100">You carefully move your hands against the wall in front of you. You feel the touch of metal, dry wall and... is this goo? Ew!!
+[[Press on.]]</tw-passagedata><tw-passagedata pid="29" name="Try to find the elevator button to go back." tags="" position="1925,425" size="100,100">You carefully move your hands against the wall in front of you. You feel the touch of metal, dry wall and... is this goo? Ew!!
 
 ...
 
@@ -265,7 +277,7 @@ Aha! There&#39;s the buttons panel.
 [[Press the UP button|Press the UP button.]] 
 [[Press the DOWN button|Press the UP button.]]
 ]
-</tw-passagedata><tw-passagedata pid="30" name="Press on." tags="" position="2075,225" size="100,100">You reach the end of the room. You flail your hands around, trying to feel for any scanning device.
+</tw-passagedata><tw-passagedata pid="30" name="Press on." tags="" position="2050,300" size="100,100">You reach the end of the room. You flail your hands around, trying to feel for any scanning device.
 
 ...
 
@@ -284,7 +296,7 @@ window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/
 Who said that?!
 
 [[Turn around and go back to the elevator.]]
-]</tw-passagedata><tw-passagedata pid="31" name="Turn around and go back to the elevator." tags="" position="1900,225" size="100,100">There clearly is something watching your every move. 
+]</tw-passagedata><tw-passagedata pid="31" name="Turn around and go back to the elevator." tags="" position="1925,300" size="100,100">There clearly is something watching your every move. 
 
 (after: 1s)[ Your heart starts beating faster... ]
 
@@ -294,7 +306,7 @@ Who said that?!
 
 (after: 4s)[ You turn around, trying discern which way the elevator was. ]
 
-(after: 4s)[ [[Move forward.|Try to find the elevator button to go back.]] ]</tw-passagedata><tw-passagedata pid="32" name="Go towards the foyer." tags="" position="2125,600" size="100,100">You slowly walk towards the doors leading to the foyer, when suddenly...
+(after: 4s)[ [[Move forward.|Try to find the elevator button to go back.]] ]</tw-passagedata><tw-passagedata pid="32" name="Go towards the foyer." tags="" position="2125,625" size="100,100">You slowly walk towards the doors leading to the foyer, when suddenly...
 
 ...
 &lt;script&gt;
@@ -306,34 +318,48 @@ The doors open on their own!
 You knew that. But for some reason, you always forget. What a curious building.
 
 [[Enter the foyer.|Foyer]]
-]</tw-passagedata><tw-passagedata pid="33" name="Try to enter the Cafeteria." tags="" position="2125,725" size="100,100">You move towards the glass wall to your left. There is no door you can use to pass through.
+]</tw-passagedata><tw-passagedata pid="33" name="Try to enter the Cafeteria." tags="" position="2125,750" size="100,100">You move towards the glass wall to your left. There is no door you can use to pass through.
 
 ...
 
 A person walks just as you turn around looking at you with a suspicious gaze.
 You notice a sadness in their eyes. Or maybe... pity? 
 
-[[Go towards the foyer.]]</tw-passagedata><tw-passagedata pid="34" name="Foyer" tags="" position="2325,650" size="100,100">FOYER DESCRIPTION
+[[Go towards the foyer.]]</tw-passagedata><tw-passagedata pid="34" name="Foyer" tags="" position="2325,650" size="100,100">You are in the foyer. You are used to it being much more lit up. It&#39;s as if someone turned off half of the lights on purpose. You hear your steps echo as you&#39;re walking around, thinking about where to go next. It&#39;s kind of chilly too, isn&#39;t it?
 
-[[You go to the GameLab|Corridor]]
+[[Go towards the Game Lab.|Corridor]]
 (if:$gameLabExplored is &quot;1&quot;)[
-[[You go to the janitor’s office | Janitor’s office]]
-[[You go to 2F13 | 2F13]]
-[[You go to the elevators.]]
-[[You go to the stairs.]]
+[[Go to the Janitor&#39;s Office. | Janitor’s Office]]
+[[Go to classroom 2F13.| 2F13]]
+[[Go to the kitchen.|Kitchen]]
+[[Go to the elevators.]]
+[[Go towards the stairs.]]
 ]
-</tw-passagedata><tw-passagedata pid="35" name=" Janitor’s office" tags="" position="2550,450" size="100,100"></tw-passagedata><tw-passagedata pid="36" name=" 2F13" tags="" position="2725,550" size="100,100"></tw-passagedata><tw-passagedata pid="37" name="You go to the elevators." tags="" position="2775,800" size="100,100"></tw-passagedata><tw-passagedata pid="38" name="You go to the stairs." tags="" position="2825,675" size="100,100"></tw-passagedata><tw-passagedata pid="39" name="Corridor" tags="" position="2375,900" size="100,100">You venture into the corridor, leading toward the GameLab
+
+(set:$shouldPlayMarioKart to false)</tw-passagedata><tw-passagedata pid="35" name=" 2F13" tags="" position="2875,325" size="100,100"></tw-passagedata><tw-passagedata pid="36" name="Corridor" tags="" position="2300,1100" size="100,100">You venture into the corridor, leading toward the GameLab
 
 (if: $gameLabExplored is &quot;1&quot;) [
 You notice a dark, ever growing puddle by the toilet’s door. The tune seems to have faded too.
 ]
 (else:) [
 As you move further, you hear a small tune coming from the toilets
+&lt;script&gt;
+window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Clovis/mario-kart.mp3?raw=true&quot;, false, &quot;marioKartAudio&quot;);
+window.marioKartAudio.volume = 0.05;
+&lt;/script&gt;
 ]
 
+&lt;span id=&#39;toilets&#39;&gt;
 [[Enter the GameLab|GameLab]] 
 [[Investigate the toilets]] 
-[[Move back to the foyer|Foyer]]</tw-passagedata><tw-passagedata pid="40" name="Investigate the toilets" tags="" position="2500,1025" size="100,100">(if: $gameLabExplored is &quot;1&quot;) [
+[[Move back to the foyer|Foyer]]
+&lt;/span&gt;
+
+&lt;script&gt;
+document.getElementById(&#39;toilets&#39;).addEventListener(&#39;click&#39;, () =&gt; {
+	window.stopSound(&quot;marioKartAudio&quot;);
+});
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="37" name="Investigate the toilets" tags="" position="2425,1225" size="100,100">(if: $gameLabExplored is &quot;1&quot;) [
 You look closer at the growing puddle and notice it’s distinctive black hue. The texture is familiarly thick.
 
 It’s blood.
@@ -352,6 +378,10 @@ That being said, you should probably call the cops.
 [[Move back to the foyer|Foyer]]
 ]
 (else:) [
+(set:$shouldPlayMarioKart to true)
+&lt;script&gt;
+window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Clovis/door-locked.wav?raw=true&quot;);
+&lt;/script&gt;
 It’s locked. 
 
 You can hear the humming more clearly. It sounds somewhat familiar, but remains hard to define
@@ -360,14 +390,18 @@ You can hear the humming more clearly. It sounds somewhat familiar, but remains 
 [[Enter the GameLab|GameLab]] 
 [[Move back to the foyer|Foyer]]
 ]
-</tw-passagedata><tw-passagedata pid="41" name="Call the cops" tags="" position="2625,1025" size="100,100">Call the cops
+</tw-passagedata><tw-passagedata pid="38" name="Call the cops" tags="" position="2550,1225" size="100,100">Call the cops
 
 You reach for your phone and notice your battery just died.
 
 Guess where your charger is ?
 
 [[“I really need to find my bag”|Investigate the toilets]](set:$phoneDead to 1)
-</tw-passagedata><tw-passagedata pid="42" name="Toilets" tags="" position="2625,1275" size="100,100">You charge the door, shoulder first. To your surprise, you meet little to no resistance as you barge into the room.
+</tw-passagedata><tw-passagedata pid="39" name="Toilets" tags="" position="2550,1475" size="100,100">...&lt;script&gt;
+window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Clovis/barge-in.mp3?raw=true&quot;);
+&lt;/script&gt;
+(after:1s)[
+You charge the door, shoulder first. To your surprise, you meet little to no resistance as you barge into the room.
 
 Your land straight into a wall, head first. You wither in pain as blood starts running down your face in the dark.
 
@@ -376,8 +410,8 @@ Eventually the automatic lights illuminate the room as they detect your finally 
 Everything seems to be normal, it’s only you in here. Are you dreaming this ? You could have sworn something was behind that door.
 
 [[Clean your wound|Sink]]
-[[Exit the toilet]](set:$toiletsChecked to 1)
-</tw-passagedata><tw-passagedata pid="43" name="GameLab" tags="" position="2375,1025" size="100,100">You enter the room, in hope to find Alvaro among the remaining students. Instead you’re greeted by an uncomfortable silence - they’re gone. The atmosphere in the room feels heavy.
+[[Exit the toilet|Corridor]](set:$toiletsChecked to 1)
+]</tw-passagedata><tw-passagedata pid="40" name="GameLab" tags="" position="2300,1225" size="100,100">You enter the room, in hope to find Alvaro among the remaining students. Instead you’re greeted by an uncomfortable silence - they’re gone. The atmosphere in the room feels heavy.
 
 Among the collection of sleeping monitors, one is displaying gibberish. 
 
@@ -389,42 +423,83 @@ Waluigi won the last race.
 [[Play some Mario Kart]] 
 [[Investigate the glitching monitor]] 
 [[Exit the room|Corridor]]
-</tw-passagedata><tw-passagedata pid="44" name="Knock on the door" tags="" position="2625,1150" size="100,100">(if:$knockCount &gt; 5) [The key to master persistence is to learn to let go, eventually]
-(elseif:$knockCount &gt; 2) [No answer, still]
+
+&lt;script&gt;
+window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Clovis/gamelab.wav?raw=true&quot;);
+&lt;/script&gt;
+
+
+(after:1s)[
+&lt;script&gt;
+window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Clovis/white-noise.wav?raw=true&quot;, true, &quot;staticAudio&quot;);
+window[&quot;staticAudio&quot;].volume = 0.1;
+&lt;/script&gt;
+]
+
+(set:$shouldPlayMarioKart to false)</tw-passagedata><tw-passagedata pid="41" name="Knock on the door" tags="" position="2550,1350" size="100,100">...&lt;script&gt;
+window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Clovis/knock.mp3?raw=true&quot;);
+&lt;/script&gt;
+(after:1s)[
+(if:$knockCount &gt; 5) [The key to master persistence is to learn to let go, eventually.]
+(elseif:$knockCount &gt; 2) [No answer, still.]
 (else:) [No answer]
 
 [[Knock again|Knock on the door]](set:$knockCount to ($knockCount + 1))
 [[Enter the GameLab|GameLab]] 
 [[Move back to the foyer|Foyer]]
-</tw-passagedata><tw-passagedata pid="45" name="Search for your bag" tags="" position="2250,1275" size="100,100">You swear it was resting by the couch, but it’s nowhere to be found. . Did Alvaro leave with it ? 
+]</tw-passagedata><tw-passagedata pid="42" name="Search for your bag" tags="" position="2175,1475" size="100,100">You swear it was resting by the couch, but it’s nowhere to be found. . Did Alvaro leave with it ? 
 
 You’re starting to suspect this might be a prank
 
-[[Move back|GameLab]] (set: $gameLabExplored to &quot;1&quot;)</tw-passagedata><tw-passagedata pid="46" name="Play some Mario Kart" tags="" position="2375,1275" size="100,100">There’s a time and place for everything
+[[Move back|GameLab]] (set: $gameLabExplored to &quot;1&quot;)</tw-passagedata><tw-passagedata pid="43" name="Play some Mario Kart" tags="" position="2300,1475" size="100,100">There’s a time and place for everything
 
-[[“Maybe next time”|GameLab]] </tw-passagedata><tw-passagedata pid="47" name="Investigate the glitching monitor" tags="" position="2500,1275" size="100,100">You cautiously walk toward the flickering screen. 
+[[“Maybe next time”|GameLab]] </tw-passagedata><tw-passagedata pid="44" name="Investigate the glitching monitor" tags="" position="2425,1475" size="100,100">You cautiously walk toward the flickering screen.
+&lt;script&gt;
+window[&quot;staticAudio&quot;].volume = 0.4;
+&lt;/script&gt;
 
 The statics coming from the speaker are getting louder as you approach.
 
-You manage to read something about “nature” and “flags”, although ultimate the screen remains unreadable.
+You manage to read something about “nature” and “flags”, although ultimately the screen remains unreadable.
 
 
 [[Move closer]] 
-[[Backtrack|GameLab]]</tw-passagedata><tw-passagedata pid="48" name="Move closer" tags="" position="2500,1400" size="100,100">The unbearable noise amplifies at each footsteps. Your eardrums are begging you to go back
+[[Backtrack|GameLab]]</tw-passagedata><tw-passagedata pid="45" name="Move closer" tags="" position="2425,1600" size="100,100">The unbearable noise amplifies at each footsteps. Your eardrums are begging you to go back.
 
-[[Move to the desk]] 
-[[Backtrack|GameLab]]</tw-passagedata><tw-passagedata pid="49" name="Move to the desk" tags="" position="2500,1525" size="100,100">Move to the desk
+[[Move to the desk]]
+&lt;span id=&#39;123&#39;&gt;
+[[Backtrack|GameLab]]
+&lt;/span&gt;
 
-The screen shuts black. You’re back to the soothing yet unsettling silence.
+&lt;script&gt;
+document.getElementById(&#39;123&#39;).addEventListener(&#39;click&#39;, () =&gt; {
+	window.stopSound(&quot;staticAudio&quot;);
+    });
+&lt;/script&gt;
 
+&lt;script&gt;
+window[&quot;staticAudio&quot;].volume = 1;
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="46" name="Move to the desk" tags="" position="2425,1725" size="100,100">The screen shuts black. You’re back to the soothing yet unsettling silence.
+(after:1s)[
+&lt;script&gt;
+window.stopSound(&quot;staticAudio&quot;);
+&lt;/script&gt;]
+(after:2s)[
 You’re there now, in front of the keyboard.
 
 [[Turn the screen back on]] 
-[[Move out|GameLab]]</tw-passagedata><tw-passagedata pid="50" name="Turn the screen back on" tags="" position="2500,1650" size="100,100">The led turns green, and after a few seconds the content of the screen reveals itself to you.
+[[Move out|GameLab]]
+]</tw-passagedata><tw-passagedata pid="47" name="Turn the screen back on" tags="" position="2425,1850" size="100,100">The led turns green, and after a few seconds the content of the screen reveals itself to you.
 
-&lt;iframe width=&quot;400&quot; height=&quot;400&quot; src=&quot;https://fqde.dev/games/flags&quot;&gt;&lt;/iframe&gt;
+&lt;iframe width=&quot;900&quot; height=&quot;600&quot; src=&quot;https://fqde.dev/games/flags&quot;&gt;&lt;/iframe&gt;
 
-[[Move out|GameLab]]</tw-passagedata><tw-passagedata pid="51" name="Sink" tags="" position="2687.5,1400" size="100,100">You painfully reach for the sink and start cleaning your face as you turn on the faucet. The soothing sound and coldness of the water feels cathartic.
+[[Move out|GameLab]]</tw-passagedata><tw-passagedata pid="48" name="Sink" tags="" position="2675,1475" size="100,100">You painfully reach for the sink and start cleaning your face as you turn on the faucet. The soothing sound and coldness of the water feels cathartic.
+&lt;script&gt;
+window.playSound(&quot;https://github.com/Learus/ungraspable-definition-twinery/blob/main/Sounds/Clovis/faucet.wav?raw=true&quot;);
+&lt;/script&gt;
+...
+
+(after:2s)[
 
 You start to reflect on the recent events. What the fuck is going on here ? Is this a nightmare ?
 
@@ -433,7 +508,7 @@ Looking back, It’s been days, weeks that you haven’t had a proper sleep. The
 You’re exhausted. Drained. And bleeding. 
 
 [[Tend to your wounds|Mirror]]
-</tw-passagedata><tw-passagedata pid="52" name="Exit the toilet" tags="" position="2812.5,1400" size="100,100"></tw-passagedata><tw-passagedata pid="53" name="Mirror" tags="" position="2687.5,1525" size="100,100">You spend several minutes cleansing the damage, realizing the futility of your effort against the endless plasma erupting from your forehead.
+]</tw-passagedata><tw-passagedata pid="49" name="Mirror" tags="" position="2675,1600" size="100,100">You spend several minutes cleansing the damage, realizing the futility of your effort against the endless plasma erupting from your forehead.
 
 You turn the faucet off. Opting instead for a nearby towel to cover the wound, temporarily.
 
@@ -454,6 +529,95 @@ Is nothing.
 He’s gone.
 
 [[Get the fuck out|Corridor]](set:$toiletsChecked to 1)
+</tw-passagedata><tw-passagedata pid="50" name="Go to the elevators." tags="" position="3050,450" size="100,100"></tw-passagedata><tw-passagedata pid="51" name="Go towards the stairs." tags="" position="3050,300" size="100,100"></tw-passagedata><tw-passagedata pid="52" name=" Janitor’s Office" tags="" position="2350,275" size="100,100">You go to the janitor’s office. Wait, janitor’s office? You’ve never even seen a janitor at the DR building before!
+
+(if:$kitchen_clean)[
+The door is ajar.
+
+[[You enter the office.]]
+]
+(else:)[
+The door is closed, but through the glass window you sense something… 
+
+It is dark so you squint to better see. A man dressed in grey overalls is sitting in an office chair, spinning slowly. It is hard to make out his features, but you see that he is holding a coffee cup in his hand.
+
+[[You call out to the man. |You call out to the man.]]
+[[You try the door. |You try the door.]]
+[[This is too weird. You go back to the foyer. |Foyer]]
+]</tw-passagedata><tw-passagedata pid="53" name="You try the door." tags="" position="2225,50" size="100,100">You grip the handle but the door won’t budge. It seems to be locked.
+
+From the inside of the office you hear a low, sad murmur. Is the janitor crying? 
+
+[[You call out to the man.|You call out to the man.]]
+[[This is too weird. You go back to the foyer. |Foyer]]
+</tw-passagedata><tw-passagedata pid="54" name="You call out to the man." tags="" position="2225,175" size="100,100">You knock on the door and call out to the janitor. The creaking of the spinning chair continues and he does not react.
+
+After a short while you hear a muffled voice from the inside: “Dirty… So dirty…”.
+
+[[You try the door.|You try the door.]]
+[[This is too weird. You go back to the foyer. |Foyer]]
+</tw-passagedata><tw-passagedata pid="55" name="Kitchen" tags="" position="2750,1050" size="100,100">You walk to the kitchen. The counter and sink is filled with dirty dishes and cups, exuding a sour smell of days old coffee. Seems like someone forgot to fill the dishwash- No, they didn’t empty that either. 
+
+[[Eh, not my problem. You walk back to the foyer. |Foyer]]
+[[I should probably do my part.]]
+[[Søren left his instant coffee out. I’ll just borrow a small cup.]]
+</tw-passagedata><tw-passagedata pid="56" name="I should probably do my part." tags="" position="2900,1150" size="100,100">You start emptying the dishwasher. Huh, people sure drink a lot of coffee. Next, you fill it up and turn it on. The quiet hum of the machine fills you with ease.
+(set:$kitchen_clean to true)
+
+[[You walk back to the foyer. |Foyer]]
+(if:$coffee_drank &lt; 10)[
+[[Søren left his instant coffee out. I’ll just borrow a small cup.]]
+]
+</tw-passagedata><tw-passagedata pid="57" name="Søren left his instant coffee out. I’ll just borrow a small cup." tags="" position="2900,975" size="100,100">He won’t mind. And he probably won’t even notice, it’s almost full! It’s odd though, you’ve never seen this type of coffee brand before: “Juul Coffee”.
+
+The refreshing coffee fills you with warmth and energy. 
+
+[[You walk back to the foyer. |Foyer]]
+[[I should probably do my part.]]
+[[Maybe just one more cup. | Maybe just one more cup]]
+
+(set:$coffee_drank to 1)</tw-passagedata><tw-passagedata pid="58" name=" Maybe just one more cup" tags="" position="3075,975" size="100,100">(set:$coffee_drank to $coffee_drank + 1)
+You have your $coffee_drank(if:$coffee_drank is 1)[st](if:$coffee_drank is 2)[nd](if:$coffee_drank is 3)[rd](if:$coffee_drank &gt; 3)[th] cup of coffee. 
+(if:$coffee_drank &lt; 10)[It once again fills you with warmth and energy.
+And there’s still plenty left of Søren’s Juul Coffee!
+
+[[You walk back to the foyer. |Foyer]]
+[[I should probably do my part.]]
+[[Maybe just one more cup. | Maybe just one more cup]]
+]
+(if:$coffee_drank &gt; 9)[You feel a little woozy from all that coffee. Your neck is damp from sweat and your breathing has hastened.
+
+You look into Søren’s Juul Coffee… It is empty. What will he think?!
+
+You feel a pressure in your chest, a numbness in your arm, and your sight begins to fade. Maybe one shouldn’t drink 10 cups of coffee in one day…
+
+[[You desperately call out for help.]]
+]
+
+</tw-passagedata><tw-passagedata pid="59" name="You desperately call out for help." tags="" position="3075,1100" size="100,100">Just as your vision begins to blacken completely you spot something on the counter top. Looks like Chris also left his coffee out. 
+
+[[He probably won’t mind.]]</tw-passagedata><tw-passagedata pid="60" name="He probably won’t mind." tags="" position="3075,1225" size="100,100">You snag a final cup of coffee. It inspires you to clean up the kitchen. Ah, the 
+wonders of caffeine!
+
+[[You begin cleaning up. |I should probably do my part.]]
+</tw-passagedata><tw-passagedata pid="61" name="You enter the office." tags="" position="2450,150" size="100,100">Inside, the lights are off and it is completely quiet. Through the large glass windows you can see out into the dark night. You could really use that fresh air right about now.
+
+In the middle of the office there is an office chair. You notice a lanyard with a keycard.
+
+[[You inspect the lanyard.]]
+[[You go back to the foyer. |Foyer]]
+</tw-passagedata><tw-passagedata pid="62" name="You inspect the lanyard." tags="" position="2450,0" size="100,100">You pick up the lanyard. It is blue in color but the keycard is pink. Aren’t ITU keycards usually blue? 
+
+[[You inspect the keycard.]]
+</tw-passagedata><tw-passagedata pid="63" name="You inspect the keycard." tags="" position="2450,0" size="100,100">The picture on the keycard is a caucasian man with short light-brown hair. But oddly, the picture looks like an oil painting.
+
+His name is “Johan Zimmerman”. Quite an unusual name for Danish janitor.
+
+Below his name you see written “Property of ITU: All Access keycard”. 
+
+[[You go back to the foyer. |Foyer]]
+
+(set:$have_keycard to true)
 </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
